@@ -10,6 +10,10 @@ const initialProductState = {
     products: ["suger", "salt"],
     numberofProducts: 2,
 }
+const initialCartState = {
+    products: ["oil"],
+    numberofProducts: 1,
+}
 
 const getProduct = () => {
     return {
