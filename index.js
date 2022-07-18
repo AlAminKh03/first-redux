@@ -174,13 +174,13 @@ const productsReducer = (state = initialiseProducts, action) => {
 
 
         default:
-            state
+            state;
     }
 }
 
 const store = createStore(productsReducer)
 
-store.subscribe = (() => {
+store.subscribe(() => {
     console.log(store.getState())
 })
 
