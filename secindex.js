@@ -3,6 +3,9 @@ const { createStore } = require('redux')
 const GET_PRODUCTS = "GET_PRODUCTS"
 const ADD_PRODUCT = "ADD_PRODUCT"
 
+const GET_CART_ITEMS = "GET_CART_ITEMS"
+const ADD_CART_ITEMS = "ADD_CART_ITEMS"
+
 const initialProductState = {
     products: ["suger", "salt"],
     numberofProducts: 2,
