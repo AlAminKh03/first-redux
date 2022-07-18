@@ -91,40 +91,98 @@
 //     console.log(v)
 // });
 
+// const { createStore } = require('redux')
+
+
+// const ADD_USER = "ADD_USER"
+
+// const userState = {
+//     count: 1,
+//     user: ["Al Amin Khan"]
+// }
+
+// const addingUSers = (user) => {
+//     return {
+//         type: ADD_USER,
+//         payload: user
+//     }
+// }
+
+// const counterReducer = (state = userState, action) => {
+//     switch (action.type) {
+//         case ADD_USER:
+//             return {
+//                 user: [...state.user, action.payload],
+//                 count: state.count + 1
+
+//             }
+//     }
+
+// }
+
+// const store = createStore(counterReducer)
+
+// store.subscribe(() => {
+//     console.log(store.getState())
+// })
+
+// store.dispatch(addingUSers("Zabed Iqbal"))
+// store.dispatch(addingUSers("Mishal"))
+
+// multiple reducer 
+
 const { createStore } = require('redux')
 
+// const 
+const ADD_PRODUCT = "ADD_PRODUCT"
+const GET_PRODUCTS = "GET_PRODUCTS"
 
-const ADD_USER = "ADD_USER"
 
-const userState = {
-    count: 1,
-    user: ["Al Amin Khan"]
+// state 
+const initialiseProducts = {
+    products: ["suger", "salt"],
+    numberOfProducts: 2,
 }
 
-const addingUSers = (user) => {
+
+// action 
+const gettingProducts = () => {
     return {
-        type: ADD_USER,
-        payload: user
+        type: GET_PRODUCTS
     }
 }
 
-const counterReducer = (state = userState, action) => {
+const addingProducts = (product) => {
+    return {
+        type: ADD_PRODUCT,
+        payload: product
+    }
+}
+
+// reducer 
+const productsReducer = (state = initialiseProducts, action) => {
     switch (action.type) {
-        case ADD_USER:
+        case GET_PRODUCTS:
             return {
-                user: [...state.user, action.payload],
-                count: state.count + 1
-
+                ...state
             }
-    }
+        case ADD_PRODUCT:
+            return {
+                products: [...state.products, action.payload],
+                numberOfProducts: state.numberOfProducts + 1
+            }
 
+
+        default:
+            state
+    }
 }
 
-const store = createStore(counterReducer)
+const store = createStore(productsReducer)
 
-store.subscribe(() => {
+store.subscribe = (() => {
     console.log(store.getState())
 })
 
-store.dispatch(addingUSers("Zabed Iqbal"))
-store.dispatch(addingUSers("Mishal"))
+store.dispatch(gettingProducts())
+store.dispatch(addingProducts('salt'))
