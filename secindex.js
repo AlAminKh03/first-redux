@@ -41,7 +41,7 @@ const addCartProduct = (product) => {
     }
 }
 
-const productReducer = (state = initialCartState, action) => {
+const productReducer = (state = initialProductState, action) => {
     switch (action.type) {
         case GET_PRODUCTS:
             return {
@@ -59,7 +59,7 @@ const productReducer = (state = initialCartState, action) => {
             return state;
     }
 }
-const cartReducer = (state = initialProductState, action) => {
+const cartReducer = (state = initialCartState, action) => {
     switch (action.type) {
         case GET_CART_ITEMS:
             return {
