@@ -12,3 +12,23 @@ const initialTodosState = {
     isLoading: false,
     err: null
 }
+
+// action 
+
+const getTodos = () => {
+    return {
+        type: GET_TODOS_REQUEST
+    }
+}
+const successTodos = (todos) => {
+    return {
+        type: GET_TODOS_SUCCESS,
+        payload: todos
+    }
+}
+const failedTodos = (error) => {
+    return {
+        type: GET_TODOS_FAILED,
+        payload: error
+    }
+}
