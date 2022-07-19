@@ -10,7 +10,7 @@ const GET_TODOS_FAILED = "GET_TODOS_FAILED"
 const initialTodosState = {
     todos: [],
     isLoading: false,
-    err: null
+    error: null
 }
 
 // action 
@@ -30,5 +30,36 @@ const failedTodos = (error) => {
     return {
         type: GET_TODOS_FAILED,
         payload: error
+    }
+}
+
+// reducer 
+
+const todosReducer = (state = initialTodosState, action) => {
+    switch (action.type) {
+        case GET_TODOS_REQUEST:
+
+            return {
+                ...state,
+                isLoading: true
+            }
+        case GET_TODOS_SUCCESS:
+
+            return {
+                ...state,
+                isLoading: false,
+                todos: action.payload
+
+            }
+        case GET_TODOS_FAILED:
+
+            return {
+                ...state,
+                isLoading: false,
+                error: action.payload
+            }
+
+        default:
+            return state
     }
 }
